@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Sms from "./Sms";
 
-function Register({ showLoginForm }) {
+function Register({ showLoginForm = () => {}}) {
   const [registerWithOtp, setRegisterWithOtp] = useState(false);
   const [registerWithPass, setRegisterWithPass] = useState(false);
 

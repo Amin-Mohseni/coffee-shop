@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Sms from "./Sms";
 
-function Login({ showRegistedForm }) {
+function Login({ showRegistedForm = () => {} }) {
   const [isLoginWithOtp, setIsLoginWithOtp] = useState(false);
 
   const hideOtpForm = () => {
