@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function Login() {
+function Login({ showRegistedForm }) {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="form-control bg-white p-6 shadow-md w-80 gap-y-4">
@@ -19,13 +19,23 @@ function Login() {
           <input type="checkbox" />
           <p className="text-sm">مرا به خاطر داشته باش</p>
         </div>
-        <button className="btn bg-[#34180E]  text-white hover:bg-[#34180E] hover:text-gray-300">ورود</button>
-        <Link className="text-center text-sm" href={"/forget-password"}>رمز عبور را فراموش کرده اید ؟</Link>
-        <button className="btn bg-[#34180E] text-white hover:bg-[#34180E] hover:text-gray-300 mb-6">ورود با کد یکبار مصرف</button>
-        <span className="text-sm">آیا حساب کاربری ندارید؟</span> 
-        <button className="btn">ثبت نام</button>
+        <button className="btn bg-[#34180E]  text-white hover:bg-[#34180E] hover:text-gray-300">
+          ورود
+        </button>
+        <Link className="text-center text-sm" href={"/forget-password"}>
+          رمز عبور را فراموش کرده اید ؟
+        </Link>
+        <button className="btn bg-[#34180E] text-white hover:bg-[#34180E] hover:text-gray-300 mb-6">
+          ورود با کد یکبار مصرف
+        </button>
+        <span className="text-sm">آیا حساب کاربری ندارید؟</span>
+        <button onClick={showRegistedForm} className="btn">
+          ثبت نام
+        </button>
       </div>
-        <Link className="mt-6" href={"/"}>لغو</Link>
+      <Link className="mt-6" href={"/"}>
+        لغو
+      </Link>
     </div>
   );
 }

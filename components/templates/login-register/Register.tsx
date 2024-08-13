@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function Register() {
+function Register({showLoginForm}) {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="form-control w-80 bg-white gap-y-4 p-3">
@@ -27,7 +27,7 @@ function Register() {
         <button className="btn bg-[#34180E] text-white hover:bg-[#34180E] hover:text-gray-300">
           ثبت نام با رمز عبور
         </button>
-        <p className="text-center text-sm pb-3">برگشت به ورود</p>
+        <p onClick={showLoginForm} className="text-center text-sm pb-3 cursor-pointer">برگشت به ورود</p>
       </div>
       <Link href={"/"} className="mt-6">
         لغو
