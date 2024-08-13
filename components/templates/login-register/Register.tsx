@@ -4,7 +4,7 @@ import React from "react";
 function Register({showLoginForm}) {
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="form-control w-80 bg-white gap-y-4 p-3">
+      <div className="form-control w-80 bg-white gap-y-4 p-3 shadow-md">
         <input
           className="p-3 border outline-none rounded-lg"
           type="text"
