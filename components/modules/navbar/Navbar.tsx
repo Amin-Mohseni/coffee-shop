@@ -414,9 +414,10 @@ function Navbar() {
             <label className="btn btn-circle bg-transparent outline-none hover:bg-transparent border-none shadow-none swap swap-rotate">
               {/* this hidden checkbox controls the state */}
               <input
-                onClick={toggleMenuHandler}
                 type="checkbox"
                 checked={toggleMenu}
+                readOnly
+                onClick={toggleMenuHandler}
               />
               {/* hamburger icon */}
               <svg
