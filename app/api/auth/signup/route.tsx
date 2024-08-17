@@ -1,17 +1,38 @@
 import connectToDB from "@/configs/db";
-import { NextApiRequest } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import UserModel from "@/models/User";
+import { generateAccessToken, hashPassword } from "@/utils/auth";
+import { roles } from "@/utils/constants";
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
   connectToDB();
-  const body = await req.body;
-  const { name, phone, email, password } = body;
+
+  const { name, phone, email, password } = req.body;
 
   // Validation
-
   const isUserExist = await UserModel.findOne({
-    $or: [{ name, phone, email, password }],
+    $or: [{ name }, { phone }, { email }],
+  });
+  if (isUserExist) {
+    return res.status(422).json({
+      message: "The username or email or phone is already taken!",
+    });
+  }
+
+  const hashedPassword = await hashPassword(password);
+  const accessToken = generateAccessToken({ name });
+
+  const users = await UserModel.find({});
+  await UserModel.create({
+    name,
+    email,
+    phone,
+    password: hashedPassword,
+    role: users.length > 0 ? roles.USER : roles.ADMIN,
   });
 
-  return Response.json({ message: "Success Response" }, { status: 201 });
+  // تنظیم هدر Set-Cookie
+  res.setHeader("Set-Cookie", `Token=${accessToken}; Path=/; HttpOnly`);
+
+  return res.status(201).json({ message: "Success Response" });
 }
