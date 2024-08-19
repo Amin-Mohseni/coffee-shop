@@ -14,14 +14,6 @@ function Register({ showLoginForm = () => {} }) {
   const hideOtpForm = () => {
     setRegisterWithOtp(false);
   };
-  const user = {
-    name,
-    phone,
-    email,
-    password,
-  };
-
-  console.log(user);
 
   const signup = async () => {
     const user = {
