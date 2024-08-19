@@ -1,23 +1,30 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose from "mongoose";
 
-// تعریف اینترفیس برای کاربر
-interface IUser extends Document {
-  name: string;
-  phone: string;
-  email: string;
-  password: string;
-}
+const schema = new mongoose.Schema({
+    name : {
+        type : String,
+        required : true ,
+    },
+    phone : {
+        type : String,
+        required : true ,
+    },
+    email : {
+        type : String,
+        required : false ,
+    },
+    password : {
+        type : String,
+        required : true ,
+    },
+    role : {
+        type : String,
+        required : "User" ,
+    },
 
-// تعریف اسکیمای کاربر
-const UserSchema: Schema<IUser> = new Schema({
-  name: { type: String, required: true },
-  phone: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-});
+    refreshToken : String,
+})
 
-// چک کردن وجود مدل قبل از تعریف مجدد آن
-const UserModel: Model<IUser> =
-  mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
+const model = mongoose.models.User || mongoose.model("User" , schema)
 
-export default UserModel;
+export default model

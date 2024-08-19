@@ -1,40 +1,38 @@
 import { hash, compare } from "bcryptjs";
-import { sign, verify, JwtPayload } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 
-// Hash کردن رمز عبور
-const hashPassword = async (password: string): Promise<string> => {
-  const hashedPassword = await hash(password, 12);
+const hashPassword = async (password: string) => {
+  const hashedPassword = await hash(password , 12);
   return hashedPassword;
 };
 
-// بررسی درستی رمز عبور با رمز عبور هش شده
-const verifyPassword = async (password: string, hashedPassword: string): Promise<boolean> => {
+const verifyPassword = async (password: string, hashedPassword: string) => {
   const isValid = await compare(password, hashedPassword);
   return isValid;
 };
 
-// تولید توکن دسترسی (Access Token)
-const generateAccessToken = (data: object): string => {
-  const token = sign({ ...data }, "asioughf289tyq09834yt809ajsf", {
+const generateAccessToken = (data: object) => {
+  const token = sign({ ...data }, process.env.AccessTokenSecretKey as string, {
     expiresIn: "60s",
   });
-  return token;
+  return true;
 };
 
-// بررسی صحت توکن دسترسی (Access Token)
-const verifyAccessToken = (token: string): JwtPayload | string | false => {
+const verifyAccessToken = (token: string) => {
   try {
-    const TokenPayload = verify(token, "asioughf289tyq09834yt809ajsf");
-    return TokenPayload;
-  } catch (err) {
-    console.error("Verify Access Token Error =>", err);
+    const tokenPayload = verify(
+      token,
+      process.env.AccessTokenSecretKey as string
+    );
+    return tokenPayload;
+  } catch (error) {
+    console.log("Verify Access Token Error ->", error);
     return false;
   }
 };
 
-// تولید توکن ریفرش (Refresh Token)
-const generateRefreshToken = (data: object): string => {
-  const token = sign({ ...data }, "ksjnguo3q4yt9872htouwoiusfa", {
+const generateRefreshToken = (data: object) => {
+  const token = sign({ ...data }, process.env.RefreshTokenSecretKey as string, {
     expiresIn: "15d",
   });
   return token;

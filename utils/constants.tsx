@@ -1,9 +1,9 @@
 export const authTypes = {
-    LOGIN : 'login' ,
-    REGISTER : 'register'
-}
+  LOGIN: "login",
+  REGISTER: "register",
+};
 
 export const roles = {
-    USER : 'USER',
-    ADMIN : 'ADMIN'
-}
+  USER: "USER",
+  ADMIN: "ADMIN",
+};
