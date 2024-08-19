@@ -2,6 +2,12 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Sms from "./Sms";
 import Swal from "sweetalert2";
+import {
+  validateEmail,
+  validatePhoneNumber,
+  validatePassword,
+  validateUsername,
+} from "@/utils/auth"; // مسیر درست به فایل اعتبارسنجی
 
 function Register({ showLoginForm = () => {} }) {
   const [registerWithOtp, setRegisterWithOtp] = useState(false);
@@ -15,13 +21,62 @@ function Register({ showLoginForm = () => {} }) {
     setRegisterWithOtp(false);
   };
 
+  const validateForm = () => {
+    if (!validateUsername(name)) {
+      Swal.fire({
+        title: "خطا",
+        text: "نام کاربری باید بین ۳ تا ۱۶ کاراکتر و شامل حروف و اعداد باشد",
+        icon: "error",
+        confirmButtonText: "بستن",
+      });
+      return false;
+    }
+
+    if (!validatePhoneNumber(phone)) {
+      Swal.fire({
+        title: "خطا",
+        text: "شماره موبایل باید با ۰۹ شروع شود و شامل ۱۱ رقم باشد",
+        icon: "error",
+        confirmButtonText: "بستن",
+      });
+      return false;
+    }
+
+    if (email && !validateEmail(email)) {
+      Swal.fire({
+        title: "خطا",
+        text: "ایمیل وارد شده معتبر نیست",
+        icon: "error",
+        confirmButtonText: "بستن",
+      });
+      return false;
+    }
+
+    if (registerWithPass && !validatePassword(password)) {
+      Swal.fire({
+        title: "خطا",
+        text: "رمز عبور باید حداقل ۸ کاراکتر و شامل یک حرف بزرگ، یک عدد و یک کاراکتر خاص باشد",
+        icon: "error",
+        confirmButtonText: "بستن",
+      });
+      return false;
+    }
+
+    return true;
+  };
+
   const signup = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
     const user = {
       name,
       phone,
       email,
       password,
     };
+
     try {
       const res = await fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
@@ -32,6 +87,10 @@ function Register({ showLoginForm = () => {} }) {
       });
 
       if (res.status === 201) {
+        setName("");
+        setPhone("");
+        setEmail("");
+        setPassword("");
         Swal.fire({
           title: "ثبت نام با موفقیت انجام شد",
           icon: "success",
