@@ -10,8 +10,8 @@ function page() {
   const showRegistedForm = () => setAuthType(authTypes.REGISTER);
 
   return (
-    <div className="grid grid-cols-2">
-      <div>
+    <div className="grid lg:grid-cols-2">
+      <div className="hidden lg:flex">
         <img
           className="object-cover object-center w-full h-full"
           src="/images/peakpx-1.jpg"

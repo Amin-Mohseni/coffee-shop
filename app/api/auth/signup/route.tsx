@@ -2,6 +2,7 @@ import connectToDB from "@/configs/db";
 import UserModel from "@/models/User";
 import { generateAccessToken, hashPassword } from "@/utils/auth";
 import { roles } from "@/utils/constants";
+import { useState } from "react";
 
 type RequestBody = {
   name: string;

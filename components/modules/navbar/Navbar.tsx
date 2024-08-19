@@ -99,7 +99,7 @@ function Navbar() {
             </Link>
             <Link
               className="rounded-none active:bg-gray-200 transition-all"
-              href={"/"}
+              href={"/login-register"}
             >
               <li className="p-5 border-b">ورود / عضویت</li>
             </Link>
