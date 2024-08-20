@@ -7,7 +7,7 @@ import { LiaRandomSolid } from "react-icons/lia";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 
-function Navbar() {
+function Navbar(props: { isLogin: boolean }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const toggleMenuHandler = () => {
     setToggleMenu(!toggleMenu);
@@ -97,18 +97,21 @@ function Navbar() {
             >
               <li className="p-5 border-b">لیست علاقه‌مندی‌ها</li>
             </Link>
-            <Link
-              className="rounded-none active:bg-gray-200 transition-all"
-              href={"/login-register"}
-            >
-              <li className="p-5 border-b">ورود / عضویت</li>
-            </Link>
-            <Link
-              className="rounded-none active:bg-gray-200 transition-all"
-              href={"/"}
-            >
-              <li className="p-5 border-b">حساب کاربری</li>
-            </Link>
+            {!props.isLogin ? (
+              <Link
+                className="rounded-none active:bg-gray-200 transition-all"
+                href={"/login-register"}
+              >
+                <li className="p-5 border-b">ورود / عضویت</li>
+              </Link>
+            ) : (
+              <Link
+                className="rounded-none active:bg-gray-200 transition-all"
+                href={"/"}
+              >
+                <li className="p-5 border-b">حساب کاربری</li>
+              </Link>
+            )}
           </ul>
         </div>
       </div>
@@ -182,61 +185,64 @@ function Navbar() {
                   <li>
                     <Link href={"/rules"}>قوانین</Link>
                   </li>
-                  <li>
-                    <Link href={"/login-register"}>ورود / عضویت</Link>
-                  </li>
-                  <div className="dropdown dropdown-hover">
-                    <Link className="flex items-center" href={"/p-user"}>
-                      حساب کاربری{" "}
-                      <span className="text-xs text-gray-400">
-                        <IoIosArrowDown />
-                      </span>
-                    </Link>
-                    <div className="dropdown-content rounded-lg shadow w-52 bg-white font-normal">
-                      <ul className="menu w-full">
-                        <li>
-                          <Link
-                            className="p-3 hover:bg-gray-100"
-                            href={"/p-user/orders"}
-                          >
-                            سفارشات
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className="p-3 hover:bg-gray-100"
-                            href={"/p-user/tickets"}
-                          >
-                            تیکت های پشتیبانی
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className="p-3 hover:bg-gray-100"
-                            href={"/p-user/comments"}
-                          >
-                            کامنت‌ها
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className="p-3 hover:bg-gray-100"
-                            href={"/p-user/wishlist"}
-                          >
-                            علاقه‌مندی‌ها
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className="p-3 hover:bg-gray-100"
-                            href={"/p-user/account-details"}
-                          >
-                            جزئیات اکانت
-                          </Link>
-                        </li>
-                      </ul>
+                  {!props.isLogin ? (
+                    <li>
+                      <Link href={"/login-register"}>ورود / عضویت</Link>
+                    </li>
+                  ) : (
+                    <div className="dropdown dropdown-hover">
+                      <Link className="flex items-center" href={"/p-user"}>
+                        حساب کاربری{" "}
+                        <span className="text-xs text-gray-400">
+                          <IoIosArrowDown />
+                        </span>
+                      </Link>
+                      <div className="dropdown-content rounded-lg shadow w-52 bg-white font-normal">
+                        <ul className="menu w-full">
+                          <li>
+                            <Link
+                              className="p-3 hover:bg-gray-100"
+                              href={"/p-user/orders"}
+                            >
+                              سفارشات
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="p-3 hover:bg-gray-100"
+                              href={"/p-user/tickets"}
+                            >
+                              تیکت های پشتیبانی
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="p-3 hover:bg-gray-100"
+                              href={"/p-user/comments"}
+                            >
+                              کامنت‌ها
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="p-3 hover:bg-gray-100"
+                              href={"/p-user/wishlist"}
+                            >
+                              علاقه‌مندی‌ها
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="p-3 hover:bg-gray-100"
+                              href={"/p-user/account-details"}
+                            >
+                              جزئیات اکانت
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </ul>
               </div>
               <div className="navbar-end w-2/4 hidden lg:flex">
@@ -327,61 +333,64 @@ function Navbar() {
               <li>
                 <Link href={"/rules"}>قوانین</Link>
               </li>
-              <li>
-                <Link href={"/login-register"}>ورود / عضویت</Link>
-              </li>
-              <div className="dropdown dropdown-hover">
-                <Link className="flex items-center" href={"/p-user"}>
-                  حساب کاربری{" "}
-                  <span className="text-xs text-gray-400">
-                    <IoIosArrowDown />
-                  </span>
-                </Link>
-                <div className="dropdown-content rounded-lg shadow w-52 bg-white font-normal">
-                  <ul className="menu w-full">
-                    <li>
-                      <Link
-                        className="p-3 hover:bg-gray-100"
-                        href={"/p-user/orders"}
-                      >
-                        سفارشات
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="p-3 hover:bg-gray-100"
-                        href={"/p-user/tickets"}
-                      >
-                        تیکت های پشتیبانی
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="p-3 hover:bg-gray-100"
-                        href={"/p-user/comments"}
-                      >
-                        کامنت‌ها
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="p-3 hover:bg-gray-100"
-                        href={"/p-user/wishlist"}
-                      >
-                        علاقه‌مندی‌ها
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="p-3 hover:bg-gray-100"
-                        href={"/p-user/account-details"}
-                      >
-                        جزئیات اکانت
-                      </Link>
-                    </li>
-                  </ul>
+              {!props.isLogin ? (
+                <li>
+                  <Link href={"/login-register"}>ورود / عضویت</Link>
+                </li>
+              ) : (
+                <div className="dropdown dropdown-hover">
+                  <Link className="flex items-center" href={"/p-user"}>
+                    حساب کاربری{" "}
+                    <span className="text-xs text-gray-400">
+                      <IoIosArrowDown />
+                    </span>
+                  </Link>
+                  <div className="dropdown-content rounded-lg shadow w-52 bg-white font-normal">
+                    <ul className="menu w-full">
+                      <li>
+                        <Link
+                          className="p-3 hover:bg-gray-100"
+                          href={"/p-user/orders"}
+                        >
+                          سفارشات
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="p-3 hover:bg-gray-100"
+                          href={"/p-user/tickets"}
+                        >
+                          تیکت های پشتیبانی
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="p-3 hover:bg-gray-100"
+                          href={"/p-user/comments"}
+                        >
+                          کامنت‌ها
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="p-3 hover:bg-gray-100"
+                          href={"/p-user/wishlist"}
+                        >
+                          علاقه‌مندی‌ها
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="p-3 hover:bg-gray-100"
+                          href={"/p-user/account-details"}
+                        >
+                          جزئیات اکانت
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              )}
             </ul>
           </div>
           <div className="navbar-end w-2/4 hidden lg:flex">
