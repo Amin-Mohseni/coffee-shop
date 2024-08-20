@@ -50,7 +50,7 @@ const validatePhoneNumber = (phone: string): boolean => {
 
 const validatePassword = (password: string): boolean => {
   const passwordRegex =
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/g;
   return passwordRegex.test(password);
 };
 
