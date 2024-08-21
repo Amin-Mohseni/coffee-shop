@@ -6,25 +6,10 @@ import Articles from "@/components/templates/index/Articles";
 import ArticleSlide from "@/components/templates/index/ArticleSlide";
 import Navbar from "@/components/modules/navbar/Navbar";
 import Footer from "@/components/modules/footer/Footer";
-import UserModel from "@/models/User";
-import { cookies } from "next/headers";
-import { verifyAccessToken } from "@/utils/auth";
-import { JwtPayload } from "jsonwebtoken";
+import authUser from "@/utils/authUser";
 
 export default async function Home() {
-  const token = cookies().get("token")?.value;
-  let user = null;
-  if (token) {
-    const tokenPayload = verifyAccessToken(token);
-    if (
-      typeof tokenPayload === "object" &&
-      tokenPayload !== null &&
-      "email" in tokenPayload
-    ) {
-      const payload = tokenPayload as JwtPayload & { email: string };  
-      user = await UserModel.findOne({ email: payload.email });
-    }
-  }
+  const user = await authUser();
 
   return (
     <div>

@@ -7,7 +7,7 @@ import { LiaRandomSolid } from "react-icons/lia";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 
-function Navbar(props: { isLogin: boolean }) {
+function Navbar(props: { isLogin: any }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const toggleMenuHandler = () => {
     setToggleMenu(!toggleMenu);
@@ -327,8 +327,29 @@ function Navbar(props: { isLogin: boolean }) {
               <li>
                 <Link href={"/contact-us"}>تماس با ما</Link>
               </li>
-              <li>
-                <Link href={"/about-us"}>درباره ما</Link>
+              <li className="dropdown dropdown-hover">
+                <Link
+                  className="flex items-center justify-center"
+                  href={"/about-us"}
+                >
+                  درباره ما
+                  <span className="text-xs text-gray-400">
+                    <IoIosArrowDown />
+                  </span>
+                </Link>
+                <div className="dropdown-content bg-white w-56 shadow">
+                  <ul className="text-gray-500 font-normal py-3">
+                    <Link href={"/"}>
+                      <li className="p-3 hover:bg-gray-100">شرایط و قوانین</li>
+                    </Link>
+
+                    <Link className="" href={"/"}>
+                      <li className="p-3 w-full hover:bg-gray-100">
+                        ثبت شکایات
+                      </li>
+                    </Link>
+                  </ul>
+                </div>
               </li>
               <li>
                 <Link href={"/rules"}>قوانین</Link>
