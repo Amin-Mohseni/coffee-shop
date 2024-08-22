@@ -41,7 +41,7 @@ function Navbar(props: { isLogin: any }) {
       <div className="z-[99999]">
         <div
           className={`fixed top-0 z-50 transition-all ease-out ${
-            toggleMenu ? "left-0 opacity-100" : "left-[-250px] opacity-0"
+            toggleMenu ? "left-0 opacity-100" : "left-[-300px] opacity-0"
           }`}
         >
           <ul className="flex flex-col bg-white h-screen shadow w-72 duration-700">
