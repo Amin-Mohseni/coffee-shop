@@ -14,7 +14,7 @@ import Breadcrumb from "./Breadcrumb";
 
 function Details() {
   return (
-    <main className="flex flex-col gap-y-3">
+    <main className="flex flex-col gap-y-3 lg:mt-0 mt-10">
       <Breadcrumb
         title={
           "کپسول قهوه SETpresso سازگار با دستگاه نسپرسو ( GOLD ) ده -10- عددی"

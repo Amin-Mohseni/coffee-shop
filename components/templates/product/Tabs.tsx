@@ -43,7 +43,7 @@ function Tabs() {
         </li>
       </ul>
       <hr />
-      <div>
+      <div className="px-3 lg:p-0">
         {showContent === "description" && <Description />}
         {showContent === "moreinfo" && <MoreInfo />}
         {showContent === "comments" && <Comments />}

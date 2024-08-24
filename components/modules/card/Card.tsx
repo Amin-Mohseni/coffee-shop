@@ -48,7 +48,11 @@ function Card() {
             </div>
           </div>
         </div>
-        <img className="group-hover:scale-105 duration-300" src="/images/card.jpg" alt="card" />
+        <img
+          className="group-hover:scale-105 duration-300"
+          src="/images/card.jpg"
+          alt="card"
+        />
       </figure>
       <button
         className={`${styles.btncard} lg:hidden md:flex cardbtn btn transition-all btn-ghost border-white relative text-white duration-300  bg-green-700 group-hover:opacity-100 overflow-hidden w-32 hover:bg-red-700 m-2 text-xs text-nowrap gap-5`}
@@ -63,16 +67,16 @@ function Card() {
           دانه قهوه کلمبیا اسپشالیتی Colombia La Esperanza فراوری نوین نچرال
           مقدار 250 گرم
         </h2>
-        <div className="flex items-center justify-center">
-          <FaStar className="text-yellow-400" />
-          <FaStar className="text-yellow-400" />
-          <FaStar className="text-yellow-400" />
-          <FaStar className="text-yellow-400" />
+        <div className="flex items-center justify-center text-[#FECE00]">
+          <FaStar />
+          <FaStar />
+          <FaStar />
+          <FaStar />
           <FaRegStar className="text-gray-300" />
         </div>
       </div>
     </div>
   );
-}
+} 
 
 export default Card;
