@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: peyda;
-  src: url("/public/fonts/Peyda-Regular.ttf");
+  src: url("/fonts/Peyda-Regular.ttf");
 }
 
 body {
@@ -22,7 +22,6 @@ body {
   color: gray;
   font-size: 24px;
   font-weight: bolder;
-
 }
 .mySwiper .swiper {
   width: 100%;

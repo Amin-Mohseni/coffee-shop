@@ -32,7 +32,7 @@ async function AboutUs() {
           </div>
         </div>
       </div>
-      <div className="conatiner m-auto grid lg:grid-cols-2 grid-cols-1">
+      <div className="container m-auto grid lg:grid-cols-2 grid-cols-1">
         <div className="text-justify gap-y-6 flex flex-col lg:p-20 p-6 justify-center items-start leading-7">
           <span>Set Coffee</span>
           <span className="text-4xl">داستان قهوه ست</span>

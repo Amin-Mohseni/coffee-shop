@@ -12,7 +12,6 @@ function Navbar(props: { isLogin: any }) {
   const toggleMenuHandler = () => {
     setToggleMenu(!toggleMenu);
   };
-  console.log(toggleMenu);
 
   const [fixNavbar, setFixNavbar] = useState(false);
 
