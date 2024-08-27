@@ -2,24 +2,22 @@ import Comment from "@/components/modules/comment/Comment";
 import React from "react";
 import CommentForm from "./CommentForm";
 
-function Comments() {
+function Comments(props: { comments: Array<any> }) {
   return (
     <div>
-      <p className="py-6 text-2xl">نظرات (7) :</p>
+      <p className="py-6 text-2xl">نظرات ({props.comments.length}) :</p>
       <hr />
 
       <main className="grid lg:grid-cols-2 mt-4">
         <div>
           <p className="pb-3">
-            7 دیدگاه برای کپسول قهوه SETPRESSO سازگار با دستگاه نسپرسو ( GOLD )
-            ده -10- عددی
+            {props.comments.length} دیدگاه برای {props.comments[0]?.productID}{" "}
+            ثبت شده است
           </p>
           <div className="divide-y divide-gray-300 lg:pl-10">
-            <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
+            {props.comments.map((comment) => (
+              <Comment key={comment._id} {...comment} />
+            ))}
           </div>
         </div>
         <hr className="lg:hidden flex" />

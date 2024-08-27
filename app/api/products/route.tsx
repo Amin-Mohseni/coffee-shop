@@ -47,7 +47,7 @@ export async function POST(req: Request, res: Response) {
   }
 }
 
-export async function GET(req: Request, res: Response) {
+export async function GET() {
   const products = await productModel.find({}, "-__v").populate("comments");
   return Response.json(products);
 }

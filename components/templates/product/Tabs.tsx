@@ -5,7 +5,7 @@ import Description from "./Description";
 import MoreInfo from "./MoreInfo";
 import Comments from "./Comments";
 
-function Tabs() {
+function Tabs(props: { product: any }) {
   const [showContent, setShowContent] = useState("description");
 
   return (
@@ -38,15 +38,21 @@ function Tabs() {
               showContent === "comments" && "text-black"
             }`}
           >
-            نظرات(۱۱)
+            نظرات({props.product.comments.length})
           </span>
         </li>
       </ul>
       <hr />
       <div className="px-3 lg:p-0">
         {showContent === "description" && <Description />}
-        {showContent === "moreinfo" && <MoreInfo />}
-        {showContent === "comments" && <Comments />}
+        {showContent === "moreinfo" && (
+          <MoreInfo moreinfo={props.product.weight} />
+        )}
+        {showContent === "comments" && (
+          <Comments
+            comments={JSON.parse(JSON.stringify(props.product.comments))}
+          />
+        )}
       </div>
     </div>
   );

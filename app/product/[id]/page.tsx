@@ -6,9 +6,21 @@ import MoreProducts from "@/components/templates/product/MoreProducts";
 import Tabs from "@/components/templates/product/Tabs";
 import authUser from "@/utils/authUser";
 import React from "react";
+import productModel from "@/models/Product";
+import commentModel from "@/models/Comment";
+import connectToDB from "@/configs/db";
 
-async function page() {
+async function page({ params }: { params: { id: string } }) {
+  await connectToDB();
   const user = await authUser();
+  const productID = params.id;
+
+  const product = await productModel.findOne({ _id: productID });
+
+  const comments = await commentModel.find({ productID: productID });
+
+  product.comments = comments;
+
   return (
     <>
       <Navbar isLogin={user} />
@@ -18,10 +30,10 @@ async function page() {
             <Gallery />
           </div>
           <div className="lg:col-span-2">
-            <Details />
+            <Details product={JSON.parse(JSON.stringify(product))} />
           </div>
         </div>
-        <Tabs />
+        <Tabs product={JSON.parse(JSON.stringify(product))} />
         <MoreProducts />
       </div>
       <Footer />

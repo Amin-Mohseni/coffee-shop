@@ -1,7 +1,19 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
-function Comment() {
+function Comment({
+  username,
+  email,
+  date,
+  score,
+  body,
+}: {
+  username: String;
+  email: String;
+  date: Date;
+  score: number;
+  body: String;
+}) {
   return (
     <section className="py-6 flex items-center gap-4">
       <img
@@ -12,21 +24,16 @@ function Comment() {
       <div className="w-full">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <strong>shahin</strong>
-            <p>۲۸ آذر ۱۴۰۱</p>
+            <strong>{username}</strong>
+            <p>{date.toLocaleString()}</p>
           </div>
           <div className="flex items-center text-[#EABE0F]">
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
+          {[...Array(5)].map((_, i) => (
+              <FaStar key={i} className={i < score ? "" : "text-gray-300"} />
+            ))}
           </div>
         </div>
-        <p className="py-4 text-gray-500">
-          قهوه بسیار خوش عطر و طعمیه…کاش کم کم مدل های کپسول ها رو متنوع تر
-          کنید.
-        </p>
+        <p className="py-4 text-gray-500">{body}</p>
       </div>
     </section>
   );
