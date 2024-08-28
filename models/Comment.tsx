@@ -17,6 +17,10 @@ const schema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  isAccept: {
+    type: Boolean,
+    default: false,
+  },
   date: {
     type: Date,
     default: () => Date.now(),

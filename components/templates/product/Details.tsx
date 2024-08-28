@@ -13,7 +13,20 @@ import { TbSwitch3 } from "react-icons/tb";
 import { CiHeart } from "react-icons/ci";
 import Breadcrumb from "./Breadcrumb";
 
-function Details(props: { product: any }) {
+interface Comment {
+  isAccept: boolean;
+}
+
+type productType = {
+  name: string;
+  score: number;
+  comments: Comment[];
+  price: number;
+  shortDescription: string;
+  tags: [string];
+};
+
+function Details(props: { product: productType }) {
   return (
     <main className="flex flex-col gap-y-3 lg:mt-0 mt-10">
       <Breadcrumb title={props.product.name} />
@@ -28,7 +41,12 @@ function Details(props: { product: any }) {
           ))}
         </div>
         <p className="text-sm">
-          (دیدگاه {props.product.comments.length} کاربر)
+          (دیدگاه{" "}
+          {
+            props.product.comments.filter((comment) => comment.isAccept === true)
+              .length
+          }
+          کاربر)
         </p>
       </div>
 

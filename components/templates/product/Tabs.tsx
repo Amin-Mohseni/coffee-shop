@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Description from "./Description";
 import MoreInfo from "./MoreInfo";
 import Comments from "./Comments";
+import { productType } from "@/utils/types";
 
-function Tabs(props: { product: any }) {
+function Tabs(props: { product: productType }) {
   const [showContent, setShowContent] = useState("description");
 
   return (
@@ -38,7 +39,13 @@ function Tabs(props: { product: any }) {
               showContent === "comments" && "text-black"
             }`}
           >
-            نظرات({props.product.comments.length})
+            نظرات(
+            {
+              props.product.comments.filter(
+                (comment) => comment.isAccept === true
+              ).length
+            }
+            )
           </span>
         </li>
       </ul>
