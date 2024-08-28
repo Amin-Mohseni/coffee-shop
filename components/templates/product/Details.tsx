@@ -3,6 +3,7 @@ import {
   FaFacebookF,
   FaLinkedinIn,
   FaPinterest,
+  FaRegStar,
   FaStar,
   FaTelegram,
   FaTwitter,
@@ -18,12 +19,13 @@ function Details(props: { product: any }) {
       <Breadcrumb title={props.product.name} />
       <h2 className="text-3xl">{props.product.name} </h2>
       <div className="flex items-center gap-3">
-        <div className="flex items-center text-[#FECE00]">
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
+        <div className="flex items-center text-[#FECE00] text-xl">
+          {[...Array(props.product.score)].map((item, i) => (
+            <FaStar key={i} />
+          ))}
+          {[...Array(5 - props.product.score)].map((item, i) => (
+            <FaRegStar className="text-gray-300" key={i} />
+          ))}
         </div>
         <p className="text-sm">
           (دیدگاه {props.product.comments.length} کاربر)
@@ -67,8 +69,11 @@ function Details(props: { product: any }) {
       </section>
 
       <hr />
-
-      <div className="flex items-center gap-3 text-[#666666] text-lg py-3">
+      <div className="py-3 flex items-center gap-1">
+        <span className="font-bold">برچسب :</span>
+        <p className="text-gray-500">{props.product.tags.join(" , ")}</p>
+      </div>
+      <div className="flex items-center gap-3 text-[#666666] text-lg pb-3">
         <p className="text-[#424242] text-base">به اشتراک گذاری: </p>
         <a className="hover:text-[#424242] transition-all" href="/">
           <FaTelegram />

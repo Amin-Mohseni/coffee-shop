@@ -46,7 +46,7 @@ function Tabs(props: { product: any }) {
       <div className="px-3 lg:p-0">
         {showContent === "description" && <Description />}
         {showContent === "moreinfo" && (
-          <MoreInfo moreinfo={props.product.weight} />
+          <MoreInfo moreinfo={props.product} />
         )}
         {showContent === "comments" && (
           <Comments

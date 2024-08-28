@@ -1,6 +1,6 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
-
+import { FaStar, FaRegStar } from "react-icons/fa";
+import moment from "moment-jalaali"
 function Comment({
   username,
   email,
@@ -14,6 +14,9 @@ function Comment({
   score: number;
   body: String;
 }) {
+  const jalaliDate = moment(date).format('jYYYY/jMM/jDD')
+  const persianDigits = jalaliDate.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
+
   return (
     <section className="py-6 flex items-center gap-4">
       <img
@@ -25,11 +28,14 @@ function Comment({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <strong>{username}</strong>
-            <p>{date.toLocaleString()}</p>
+            <p>{persianDigits}</p>
           </div>
           <div className="flex items-center text-[#EABE0F]">
-          {[...Array(5)].map((_, i) => (
-              <FaStar key={i} className={i < score ? "" : "text-gray-300"} />
+            {[...Array(score)].map((item, i) => (
+              <FaStar key={i} />
+            ))}
+            {[...Array(5 - score)].map((item, i) => (
+              <FaRegStar className="text-gray-300" key={i} />
             ))}
           </div>
         </div>
