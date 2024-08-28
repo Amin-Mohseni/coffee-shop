@@ -1,7 +1,6 @@
 import connectToDB from "@/configs/db";
 import commentModel from "@/models/Comment";
 import productModel from "@/models/Product";
-import { comment } from "postcss";
 
 export async function POST(req: Request) {
   try {

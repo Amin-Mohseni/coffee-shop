@@ -45,11 +45,10 @@ function Tabs(props: { product: any }) {
       <hr />
       <div className="px-3 lg:p-0">
         {showContent === "description" && <Description />}
-        {showContent === "moreinfo" && (
-          <MoreInfo moreinfo={props.product} />
-        )}
+        {showContent === "moreinfo" && <MoreInfo moreinfo={props.product} />}
         {showContent === "comments" && (
           <Comments
+            productID={props.product._id}
             comments={JSON.parse(JSON.stringify(props.product.comments))}
           />
         )}
