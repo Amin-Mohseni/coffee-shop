@@ -8,7 +8,6 @@ function CommentForm({ productID }: { productID: string }) {
   const [email, setEmail] = useState("");
   const [score, setScore] = useState<number>(0);
   const [hoveredStar, setHoveredStar] = useState<number | null>(null);
-  console.log(score);
 
   const submitComment = async () => {
     const comment = {

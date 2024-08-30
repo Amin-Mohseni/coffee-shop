@@ -5,7 +5,15 @@ import { FiShoppingCart } from "react-icons/fi";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import styles from "./Card.module.css";
 
-function Card() {
+function Card({
+  name,
+  price,
+  score,
+}: {
+  name: string;
+  price: number;
+  score: number;
+}) {
   return (
     <div className="card w-48 flex flex-col justify-center items-center">
       <figure className="relative group">
@@ -64,19 +72,22 @@ function Card() {
       </button>
       <div className="card-body pt-2 text-center">
         <h2 className="text-sm text-gray-500">
-          دانه قهوه کلمبیا اسپشالیتی Colombia La Esperanza فراوری نوین نچرال
-          مقدار 250 گرم
+          <Link href={"/"}>{name}</Link>
         </h2>
         <div className="flex items-center justify-center text-[#FECE00]">
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaRegStar className="text-gray-300" />
+          {new Array(score).fill(0).map((_, i) => (
+            <FaStar key={i} />
+          ))}
+          {new Array(5 - score).fill(0).map((_, i) => (
+            <FaRegStar className="text-gray-300" />
+          ))}
         </div>
+        <span className="text-sm text-[#34180E]">
+          {price.toLocaleString()} تومان
+        </span>
       </div>
     </div>
   );
-} 
+}
 
 export default Card;

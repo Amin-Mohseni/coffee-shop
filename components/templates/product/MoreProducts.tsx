@@ -4,9 +4,14 @@ import Card from "@/components/modules/card/Card";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
+import { productType } from "@/utils/types";
 
-function MoreProducts() {
+function MoreProducts({
+  relatedProduct,
+}: {
+  relatedProduct: Array<productType>;
+}) {
   return (
     <>
       <div className="mt-10">
@@ -40,30 +45,11 @@ function MoreProducts() {
             },
           }}
         >
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
+          {relatedProduct.map((item) => (
+            <SwiperSlide key={item._id}>
+              <Card {...item}/>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </>

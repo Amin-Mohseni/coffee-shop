@@ -29,8 +29,8 @@ function Gallery() {
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
       >
-        {images.map((img) => (
-          <SwiperSlide key={img}>
+        {images.map((img, i) => (
+          <SwiperSlide key={i}>
             <img className="w-full" src={img} alt="Gallery" />
           </SwiperSlide>
         ))}
@@ -45,8 +45,8 @@ function Gallery() {
         modules={[FreeMode, Navigation, Thumbs]}
         className="gallery-slider-2"
       >
-        {images.map((img) => (
-          <SwiperSlide key={img}>
+        {images.map((img, i) => (
+          <SwiperSlide key={i}>
             <img src={img} alt="Thumbnail" />
           </SwiperSlide>
         ))}

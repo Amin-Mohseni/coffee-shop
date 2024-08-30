@@ -37,7 +37,7 @@ function Footer() {
           <p className="text-white text-lg mb-3 mr-2">آخرین نوشته ها</p>
           {Array(3)
             .fill(1)
-            .map((index) => (
+            .map((_ , index) => (
               <div
                 key={index}
                 className="divide-y divide-gray-600 flex pb-4 text-white items-center justify-center"

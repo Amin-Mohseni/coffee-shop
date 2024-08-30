@@ -12,11 +12,9 @@ function Products() {
         <span className="text-gray-400 text-sm">Coffee</span>
       </section>
       <main className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 justify-center items-center lg:gap-x-10">
-        {Array(10)
-          .fill(1)
-          .map((items, index) => (
-            <Card key={index} />
-          ))}
+        {new Array(10).fill(0).map((items, index) => (
+          <Card {...items} key={index} />
+        ))}
       </main>
     </div>
   );
