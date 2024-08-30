@@ -21,7 +21,10 @@ async function page({ params }: { params: { id: string } }) {
 
   product.comments = comments;
 
+  const relatedProduct = await productModel.find({ smell : product.smell });
+
   return (
+    
     <>
       <Navbar isLogin={user} />
       <div className="mt-40 container m-auto">
@@ -34,7 +37,7 @@ async function page({ params }: { params: { id: string } }) {
           </div>
         </div>
         <Tabs product={JSON.parse(JSON.stringify(product))} />
-        <MoreProducts />
+        <MoreProducts relatedProduct={relatedProduct} />
       </div>
       <Footer />
     </>
