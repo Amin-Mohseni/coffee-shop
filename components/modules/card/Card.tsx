@@ -5,15 +5,13 @@ import { FiShoppingCart } from "react-icons/fi";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import styles from "./Card.module.css";
 
-function Card({
-  name,
-  price,
-  score,
-}: {
+interface CardProps {
   name: string;
   price: number;
   score: number;
-}) {
+}
+
+const Card: React.FC<CardProps> = ({ name, price, score }) => {
   return (
     <div className="card w-48 flex flex-col justify-center items-center">
       <figure className="relative group">
@@ -31,7 +29,7 @@ function Card({
               className="tooltip tooltip-right"
               data-tip="افزودن به علاقه‌مندی"
             >
-              <Link className="flex " href={"/"}>
+              <Link className="flex" href={"/"}>
                 <CiHeart
                   className="hover:text-gray-300 transition-all duration-300"
                   size={25}
@@ -39,7 +37,7 @@ function Card({
               </Link>
             </div>
             <div className="tooltip tooltip-right" data-tip="مشاهده سریع">
-              <Link className="flex " href={"/"}>
+              <Link className="flex" href={"/"}>
                 <CiSearch
                   className="hover:text-gray-300 transition-all duration-300"
                   size={25}
@@ -47,7 +45,7 @@ function Card({
               </Link>
             </div>
             <div className="tooltip tooltip-right" data-tip="مقایسه">
-              <Link className="flex " href={"/"}>
+              <Link className="flex" href={"/"}>
                 <CiShuffle
                   className="hover:text-gray-300 transition-all duration-300"
                   size={25}
@@ -63,7 +61,7 @@ function Card({
         />
       </figure>
       <button
-        className={`${styles.btncard} lg:hidden md:flex cardbtn btn transition-all btn-ghost border-white relative text-white duration-300  bg-green-700 group-hover:opacity-100 overflow-hidden w-32 hover:bg-red-700 m-2 text-xs text-nowrap gap-5`}
+        className={`${styles.btncard} lg:hidden md:flex cardbtn btn transition-all btn-ghost border-white relative text-white duration-300 bg-green-700 group-hover:opacity-100 overflow-hidden w-32 hover:bg-red-700 m-2 text-xs text-nowrap gap-5`}
       >
         <span>افزودن به سبد خرید</span>
         <span>
@@ -75,19 +73,19 @@ function Card({
           <Link href={"/"}>{name}</Link>
         </h2>
         <div className="flex items-center justify-center text-[#FECE00]">
-          {new Array(score).fill(0).map((_, i) => (
+          {Array.from({ length: score }).map((_, i) => (
             <FaStar key={i} />
           ))}
-          {new Array(5 - score).fill(0).map((_, i) => (
-            <FaRegStar className="text-gray-300" />
+          {Array.from({ length: 5 - score }).map((_, i) => (
+            <FaRegStar key={i} className="text-gray-300" />
           ))}
         </div>
         <span className="text-sm text-[#34180E]">
-          {price.toLocaleString()} تومان
+          {price?.toLocaleString()} تومان
         </span>
       </div>
     </div>
   );
-}
+};
 
 export default Card;

@@ -246,12 +246,14 @@ function Navbar(props: { isLogin: any }) {
               </div>
               <div className="navbar-end w-2/4 hidden lg:flex">
                 <ul className="flex items-center justify-between gap-4 text-xl">
-                  <li className="relative">
-                    <MdFavoriteBorder />
-                    <div className="badge badge-xs absolute top-[-8px] right-3 w-4 h-4">
-                      ۰
-                    </div>
-                  </li>
+                  <Link href={"/wishlist"}>
+                    <li className="relative">
+                      <MdFavoriteBorder />
+                      <div className="badge badge-xs absolute top-[-8px] right-3 w-4 h-4">
+                        ۰
+                      </div>
+                    </li>
+                  </Link>
                   <li className="relative">
                     <LiaRandomSolid />
                     <div className="badge badge-xs absolute top-[-8px] right-3 w-4 h-4">
@@ -415,12 +417,14 @@ function Navbar(props: { isLogin: any }) {
           </div>
           <div className="navbar-end w-2/4 hidden lg:flex">
             <ul className="flex items-center justify-between gap-4 text-xl">
-              <li className="relative">
-                <MdFavoriteBorder />
-                <div className="badge badge-xs absolute top-[-8px] right-3 w-4 h-4">
-                  ۰
-                </div>
-              </li>
+              <Link href={"/wishlist"}>
+                <li className="relative">
+                  <MdFavoriteBorder />
+                  <div className="badge badge-xs absolute top-[-8px] right-3 w-4 h-4">
+                    ۰
+                  </div>
+                </li>
+              </Link>
               <li className="relative">
                 <LiaRandomSolid />
                 <div className="badge badge-xs absolute top-[-8px] right-3 w-4 h-4">

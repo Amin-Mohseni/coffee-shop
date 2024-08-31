@@ -1,16 +1,19 @@
 import mongoose from "mongoose";
-require("@/models/User");
-require("@/models/Product");
+
+import "./User";
+import "./Product";
 
 const schema = new mongoose.Schema(
   {
     user: {
-      Type: mongoose.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "User",
+      required: true,
     },
     product: {
-      Type: mongoose.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "Product",
+      required: true,
     },
   },
   {
@@ -18,6 +21,6 @@ const schema = new mongoose.Schema(
   }
 );
 
-const model = mongoose.models.WishList || mongoose.model("WishList", schema);
+const model = mongoose.models.Wishlist || mongoose.model("Wishlist", schema);
 
 export default model;

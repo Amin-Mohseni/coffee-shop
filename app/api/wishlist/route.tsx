@@ -7,7 +7,9 @@ export async function POST(req: Request) {
   try {
     await connectToDB();
     const body = await req.json();
-    const [user, product] = body;
+    const {user, product} = body;
+
+    console.log(user, product);
 
     const userExist = await userModel.findById(user);
     if (!userExist) {

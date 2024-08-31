@@ -3,11 +3,15 @@ import { cookies } from "next/headers";
 import { verifyAccessToken } from "./auth";
 import { JwtPayload } from "jsonwebtoken";
 import connectToDB from "@/configs/db";
+import { InferSchemaType } from "mongoose";
 
-const authUser = async () => {
+type UserType = InferSchemaType<typeof UserModel.schema>;
+
+const authUser = async (): Promise<UserType | null> => {
   await connectToDB();
   const token = cookies().get("token")?.value;
   let user = null;
+
   if (token) {
     const tokenPayload = verifyAccessToken(token);
     if (
@@ -19,6 +23,8 @@ const authUser = async () => {
       user = await UserModel.findOne({ email: payload.email });
     }
   }
+
+  return user;
 };
 
 export default authUser;
