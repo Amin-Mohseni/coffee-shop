@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import React from "react";
 import { CiSearch, CiShuffle } from "react-icons/ci";
@@ -11,11 +10,12 @@ interface CardProps {
   name: string;
   price: number;
   score: number;
+  _id: string;
 }
 
-const Card: React.FC<CardProps> = ({ name, price, score }) => {
+const Card: React.FC<CardProps> = ({ name, price, score, _id }) => {
   return (
-    <div className="card w-48 flex flex-col justify-center items-center">
+    <div className="card w-full max-w-[300px] flex flex-col justify-center items-center">
       <figure className="relative group">
         <div className="absolute w-full h-full bg-black/40 top-0 left-0 transition-all duration-300 flex justify-center items-center opacity-0 group-hover:lg:opacity-100 z-10">
           <button
@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ name, price, score }) => {
             </span>
           </button>
           <div className="absolute text-white top-3 left-[-200px] group-hover:left-2 transition-all flex flex-col gap-2 items-center justify-center">
-            <AddtoWishList/>
+            <AddtoWishList productID={_id} title={""} />
             <div className="tooltip tooltip-right" data-tip="مشاهده سریع">
               <Link className="flex" href={"/"}>
                 <CiSearch

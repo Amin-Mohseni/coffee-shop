@@ -60,11 +60,8 @@ function AddtoWishList({
 
   return (
     <div className="tooltip tooltip-right" data-tip="افزودن به علاقه‌مندی">
-      <a className="flex" href="#" onClick={addtoWishList}>
-        <CiHeart
-          className="hover:text-gray-300 transition-all duration-300"
-          size={25}
-        />
+      <a className="flex hover:text-gray-500 transition-all duration-300" href="#" onClick={addtoWishList}>
+        <CiHeart className=" transition-all duration-300" size={25} />
         {title}
       </a>
     </div>

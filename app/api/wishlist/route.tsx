@@ -2,14 +2,13 @@ import wishList from "@/models/WilshList";
 import userModel from "@/models/User";
 import productModel from "@/models/Product";
 import connectToDB from "@/configs/db";
+import wishListModel from "@/models/WilshList";
 
 export async function POST(req: Request) {
   try {
     await connectToDB();
     const body = await req.json();
-    const {user, product} = body;
-
-    console.log(user, product);
+    const { user, product } = body;
 
     const userExist = await userModel.findById(user);
     if (!userExist) {
@@ -21,7 +20,11 @@ export async function POST(req: Request) {
       return Response.json({ message: "Product Not Found !" }, { status: 404 });
     }
 
-    await wishList.create({ user, product });
+    const wish = await wishListModel.findOne({ user, product });
+
+    if (!wish) {
+      await wishList.create({ user, product });
+    }
 
     return Response.json(
       { message: "Product added to wishlist successfully!" },

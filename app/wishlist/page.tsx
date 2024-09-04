@@ -35,7 +35,7 @@ async function page() {
         )}
         <main>
           {wishes.length > 0 ? (
-            <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 justify-center items-center lg:gap-x-10 mt-10">
+            <div className="grid lg:grid-cols-3 grid-cols-2 justify-center items-center lg:gap-x-10 mt-10">
               {wishes.map((wish) => (
                 <Card key={wish._id} {...wish.product} />
               ))}
