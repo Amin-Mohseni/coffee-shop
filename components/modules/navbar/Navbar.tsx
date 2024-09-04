@@ -340,7 +340,7 @@ function Navbar(props: { isLogin: boolean }) {
                 </Link>
                 <div className="dropdown-content bg-white w-56 shadow">
                   <ul className="text-gray-500 font-normal py-3">
-                    <Link href={"/"}>
+                    <Link href={"/rules"}>
                       <li className="p-3 hover:bg-gray-100">شرایط و قوانین</li>
                     </Link>
 

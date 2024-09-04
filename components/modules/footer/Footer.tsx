@@ -79,7 +79,7 @@ function Footer() {
           <span className="text-white text-lg">منوی فوتر</span>
           <ul className="flex flex-col text-gray-500 gap-y-3 mt-3">
             <li>
-              <Link href={"/"}>شرایط و قوانین</Link>
+              <Link href={"/rules"}>شرایط و قوانین</Link>
             </li>
             <li>
               <Link href={"/"}>شرایط و هزینه ارسال</Link>

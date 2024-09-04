@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: "peyda";
+  font-family: "peyda" , sans-serif;
 }
 .mySwiper .swiper-button-next::after,
 .mySwiper .swiper-button-prev::after {

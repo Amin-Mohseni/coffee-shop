@@ -9,8 +9,8 @@ import { FaLocationDot } from "react-icons/fa6";
 
 function ContactInfo() {
   return (
-    <div className="text-gray-500 flex flex-col lg:border-r lg:pr-12 gap-6">
-      <span>تماس با ما</span>
+    <div className="text-gray-500 flex flex-col lg:border-r h-fit lg:px-12 gap-6">
+      <span className="text-sm">تماس با ما</span>
       <span>اطلاعات تماس</span>
       <div className="flex lg:flex-row flex-col lg:items-center gap-4">
         <span>
