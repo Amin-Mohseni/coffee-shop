@@ -10,10 +10,11 @@ import authUser from "@/utils/authUser";
 
 export default async function Home() {
   const user = await authUser();
+  
 
   return (
     <div>
-      <Navbar isLogin={user} />
+      <Navbar isLogin={user !== null}  />
       <Banner />
       <div className="container m-auto">
         <Products />

@@ -1,9 +1,11 @@
+
 import Link from "next/link";
 import React from "react";
-import { CiSearch, CiHeart, CiShuffle } from "react-icons/ci";
+import { CiSearch, CiShuffle } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import styles from "./Card.module.css";
+import AddtoWishList from "@/components/templates/product/AddtoWishList";
 
 interface CardProps {
   name: string;
@@ -25,17 +27,7 @@ const Card: React.FC<CardProps> = ({ name, price, score }) => {
             </span>
           </button>
           <div className="absolute text-white top-3 left-[-200px] group-hover:left-2 transition-all flex flex-col gap-2 items-center justify-center">
-            <div
-              className="tooltip tooltip-right"
-              data-tip="افزودن به علاقه‌مندی"
-            >
-              <Link className="flex" href={"/"}>
-                <CiHeart
-                  className="hover:text-gray-300 transition-all duration-300"
-                  size={25}
-                />
-              </Link>
-            </div>
+            <AddtoWishList/>
             <div className="tooltip tooltip-right" data-tip="مشاهده سریع">
               <Link className="flex" href={"/"}>
                 <CiSearch

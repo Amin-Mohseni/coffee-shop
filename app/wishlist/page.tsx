@@ -24,7 +24,7 @@ async function page() {
 
   return (
     <>
-      <Navbar isLogin={user} />
+      <Navbar isLogin={user !== null} />
       <BreadCrumb route={"علاقه‌مندی ها"} />
       <main className="container m-auto">
         {wishes.length > 0 && (

@@ -7,7 +7,7 @@ import { LiaRandomSolid } from "react-icons/lia";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 
-function Navbar(props: { isLogin: any }) {
+function Navbar(props: { isLogin: boolean }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const toggleMenuHandler = () => {
     setToggleMenu(!toggleMenu);
@@ -487,4 +487,4 @@ function Navbar(props: { isLogin: any }) {
   );
 }
 
-export default Navbar;
+export default React.memo(Navbar);

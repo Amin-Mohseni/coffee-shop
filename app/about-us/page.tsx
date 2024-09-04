@@ -8,7 +8,7 @@ async function AboutUs() {
   const user = await authUser();
   return (
     <div>
-      <Navbar isLogin={user} />
+      <Navbar isLogin={user !== null}  />
       <BreadCrumb route={"درباره ما"} />
       <div className="bg-[#F9F9F9]">
         <div className="container m-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">

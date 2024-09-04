@@ -11,23 +11,25 @@ function Comments({
 }) {
   return (
     <div>
-      <p className="py-6 text-2xl">
-        نظرات ({comments.filter((comment) => comment.isAccept).length}) :
-      </p>
+      <div className="py-6">
+        <span className="text-2xl">
+          نظرات ({comments.filter((comment) => comment.isAccept).length}) :
+        </span>
+      </div>
       <hr />
 
       <main className="grid lg:grid-cols-2 mt-4">
         <div>
-          <p className="pb-3">
+          <span className="pb-3">
             {comments.filter((comment) => comment.isAccept === true).length ? (
               <div>
                 {comments.filter((comment) => comment.isAccept).length}
                 دیدگاه برای {productID} ثبت شده است
               </div>
             ) : (
-              <p>نظری برای این محصول ثبت نشده است.</p>
+              <span>نظری برای این محصول ثبت نشده است.</span>
             )}
-          </p>
+          </span>
           <div className="divide-y divide-gray-300 lg:pl-10">
             {comments.map(
               (comment) =>

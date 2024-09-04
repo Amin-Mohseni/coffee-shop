@@ -1,9 +1,7 @@
 import Card from "@/components/modules/card/Card";
 import connectToDB from "@/configs/db";
-import authUser from "@/utils/authUser";
 import productModel from "@/models/Product";
 import React from "react";
-import wishlistModel from "@/models/WilshList";
 import { productType } from "@/utils/types";
 
 async function Products() {

@@ -21,6 +21,10 @@ const authUser = async (): Promise<UserType | null> => {
     ) {
       const payload = tokenPayload as JwtPayload & { email: string };
       user = await UserModel.findOne({ email: payload.email });
+
+      if (user) {
+        user = user.toObject();
+      }
     }
   }
 

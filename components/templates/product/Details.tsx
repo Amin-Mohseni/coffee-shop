@@ -12,6 +12,7 @@ import { IoCheckmark } from "react-icons/io5";
 import { TbSwitch3 } from "react-icons/tb";
 import { CiHeart } from "react-icons/ci";
 import Breadcrumb from "./Breadcrumb";
+import AddtoWishList from "./AddtoWishList";
 
 interface Comment {
   isAccept: boolean;
@@ -24,6 +25,7 @@ type productType = {
   price: number;
   shortDescription: string;
   tags: [string];
+  _id: string;
 };
 
 function Details(props: { product: productType }) {
@@ -43,8 +45,9 @@ function Details(props: { product: productType }) {
         <p className="text-sm">
           (دیدگاه{" "}
           {
-            props.product.comments.filter((comment) => comment.isAccept === true)
-              .length
+            props.product.comments.filter(
+              (comment) => comment.isAccept === true
+            ).length
           }
           کاربر)
         </p>
@@ -77,8 +80,10 @@ function Details(props: { product: productType }) {
 
       <section className="flex items-center gap-6">
         <div className="flex items-center gap-1">
-          <CiHeart />
-          <a href="/">افزودن به علاقه مندی ها</a>
+          <AddtoWishList
+            productID={props.product._id}
+            title={"افزودن به علاقه‌مندی‌ها"}
+          />
         </div>
         <div className="flex items-center gap-1">
           <TbSwitch3 />
