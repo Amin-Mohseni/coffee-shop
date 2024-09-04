@@ -50,7 +50,7 @@ const validatePhoneNumber = (phone: string): boolean => {
 
 const validatePassword = (password: string): boolean => {
   const passwordRegex =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/g;
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/g;
   return passwordRegex.test(password);
 };
 
@@ -59,7 +59,19 @@ const validateUsername = (username: string): boolean => {
   return usernameRegex.test(username);
 };
 
+const validateCompany = (company: string): boolean => {
+  const companyRegex = /^[a-zA-Z0-9]{3,16}$/;
+  return companyRegex.test(company);
+};
+
+const validateMessage = (message: string): boolean => {
+  const messageRegex = /^.{10,500}$/;
+  return messageRegex.test(message);
+};
+
 export {
+  validateMessage,
+  validateCompany,
   hashPassword,
   verifyPassword,
   generateAccessToken,
