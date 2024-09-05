@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../modules/navbar/Navbar";
+import Navbar from "../../components/modules/navbar/Navbar";
 import authUser from "@/utils/authUser";
-import Footer from "../modules/footer/Footer";
-import BreadCrumb from "../modules/breadcrumb/BreadCrumb";
-import SideBar from "../templates/p-user/SideBar";
+import Footer from "../../components/modules/footer/Footer";
+import BreadCrumb from "../../components/modules/breadcrumb/BreadCrumb";
+import SideBar from "../../components/templates/p-user/SideBar";
 
 const user = async () => {
   return authUser();
@@ -18,7 +18,9 @@ function UserLayout({ children }: { children: React.ReactNode }) {
         <div className="lg:col-span-1">
           <SideBar />
         </div>
-        <section className="lg:col-span-2 lg:px-10 px-6 mt-10 lg:m-0">{children}</section>
+        <section className="lg:col-span-2 lg:px-10 px-6 mt-10 lg:m-0">
+          {children}
+        </section>
       </main>
       <Footer />
     </div>
