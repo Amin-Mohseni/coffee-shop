@@ -23,6 +23,11 @@ function ContactForm() {
     const isValidCompany = validateCompany(company);
     const isValidMessage = validateMessage(message);
 
+    if (!isValidName) {
+      Swal.fire("نام وارد شده نامعتبر است", "خطا", "error");
+      return;
+    }
+
     if (!isValidPhone) {
       Swal.fire("شماره تماس نامعتبر است", "خطا", "error");
       return;
@@ -31,10 +36,7 @@ function ContactForm() {
       Swal.fire("آدرس ایمیل نامعتبر است", "خطا", "error");
       return;
     }
-    if (!isValidName) {
-      Swal.fire("نام وارد شده نامعتبر است", "خطا", "error");
-      return;
-    }
+
     if (!isValidCompany) {
       Swal.fire("نام شرکت نامعتبر است", "خطا", "error");
       return;
@@ -57,9 +59,8 @@ function ContactForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(contact),
     });
-
     if (res.status === 201) {
-      Swal.fire("پیغام شما با موفقیت ارسال شد", "بستن", "success");
+      Swal.fire("پیغام شما با موفقیت ارسال شد", "موفقیت", "success");
       setEmail("");
       setName("");
       setCompany("");
@@ -133,7 +134,7 @@ function ContactForm() {
       <div className="flex flex-col gap-1">
         <label htmlFor="textarea">درخواست شما</label>
         <textarea
-          className="border border-gray-500 outline-gray-300 rounded-sm py-3 px-6"
+          className="border border-gray-500 outline-gray-300 rounded-sm py-3 px-6 text-sm"
           cols={45}
           rows={5}
           required

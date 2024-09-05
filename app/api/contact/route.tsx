@@ -8,12 +8,22 @@ import {
   validateUsername,
 } from "@/utils/auth";
 
-async function POST(req: Request) {
+interface ContactBody {
+  phone: string;
+  email: string;
+  name: string;
+  company: string;
+  message: string;
+}
+
+export async function POST(req: Request) {
   try {
     await connectToDB();
-    const body = await req.json();
+
+    const body: ContactBody = await req.json();
 
     const { phone, email, name, company, message } = body;
+
     const isValidPhone = validatePhoneNumber(phone);
     const isValidEmail = validateEmail(email);
     const isValidName = validateUsername(name);
