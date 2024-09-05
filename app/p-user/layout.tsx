@@ -4,12 +4,16 @@ import authUser from "@/utils/authUser";
 import Footer from "../../components/modules/footer/Footer";
 import BreadCrumb from "../../components/modules/breadcrumb/BreadCrumb";
 import SideBar from "../../components/templates/p-user/SideBar";
+import { redirect } from "next/navigation";
 
 const user = async () => {
   return authUser();
 };
 
 function UserLayout({ children }: { children: React.ReactNode }) {
+  if (!user) {
+    redirect("/login-register");
+  }
   return (
     <div>
       <Navbar isLogin={user !== null} />

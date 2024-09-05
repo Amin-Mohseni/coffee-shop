@@ -24,6 +24,9 @@ function SideBar() {
           <Link href={"/p-user/points"}>امتیاز من</Link>
         </li>
         <li>
+          <Link href={"/p-user/tickets"}>تیکت های پشتیبانی</Link>
+        </li>
+        <li>
           <Link href={"/wishlist"}>لیست علاقه‌مندی‌ها</Link>
         </li>
         <li>
