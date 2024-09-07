@@ -38,7 +38,7 @@ async function page() {
           ))}
         </div>
       ) : (
-        <div className="h-full flex flex-col justify-center items-center gap-6 py-20">
+        <div className="h-full flex flex-col justify-center items-center gap-6 py-10">
           <FaRegHeart className="text-gray-200" size={200} />
           <span className="text-5xl font-bold">This wishlist is empty.</span>
           <p className="text-gray-500">
