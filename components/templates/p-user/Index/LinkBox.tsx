@@ -2,8 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { GoChecklist } from "react-icons/go";
 import { PiMapPinArea, PiUserCircleLight } from "react-icons/pi";
-import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
+import { IoLogOutOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
+import { AiOutlineComment } from "react-icons/ai";
 
 const linkBox = [
   {
@@ -22,9 +23,9 @@ const linkBox = [
     link: "/p-user/edit-account",
   },
   {
-    title: "امتیاز من",
-    icon: <IoSettingsOutline />,
-    link: "/p-user/points",
+    title: "کامنت ها",
+    icon: <AiOutlineComment />,
+    link: "/p-user/comments",
   },
   {
     title: "لیست علاقه مندی‌ها",

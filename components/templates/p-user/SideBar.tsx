@@ -21,7 +21,7 @@ function SideBar() {
           <Link href={"/p-user/edit-accout"}>جزئیات حساب</Link>
         </li>
         <li>
-          <Link href={"/p-user/points"}>امتیاز من</Link>
+          <Link href={"/p-user/comments"}>کامنت ها</Link>
         </li>
         <li>
           <Link href={"/p-user/tickets"}>تیکت های پشتیبانی</Link>
