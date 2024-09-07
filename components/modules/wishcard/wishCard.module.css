@@ -1,0 +1,19 @@
+.btncard span {
+  transition: 0.6s;
+  transform: translateY(15px);
+}
+.btncard:before,
+.btncard:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  transition: 0.4s, opacity 0.6s;
+}
+.btncard:before {
+  content: attr(data-hover);
+  transform: translateY(150%);
+}
+.btncard:hover span{
+  transform: translateY(-100%);
+}
