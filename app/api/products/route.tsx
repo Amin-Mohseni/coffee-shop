@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     return new Response(
       JSON.stringify({
         message: "Internal Server Error",
-        error: error.message,
+        error,
       }),
       { status: 500 }
     );
@@ -66,7 +66,7 @@ export async function GET() {
     return new Response(
       JSON.stringify({
         message: "Failed to fetch products",
-        error: error.message,
+        error,
       }),
       { status: 500 }
     );
