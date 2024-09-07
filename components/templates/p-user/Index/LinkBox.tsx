@@ -29,7 +29,7 @@ const linkBox = [
   {
     title: "لیست علاقه مندی‌ها",
     icon: <CiHeart />,
-    link: "/wishlist",
+    link: "/p-user/wishlist",
   },
   {
     title: "خروج",

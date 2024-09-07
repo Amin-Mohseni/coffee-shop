@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import styles from "./wishCard.module.css";
+import RemoveWishCard from "./RemoveWishCard";
 
 interface WishCardProps {
   name: string;
@@ -62,15 +63,7 @@ const WishCard: React.FC<WishCardProps> = ({ name, price, score, _id }) => {
           {price?.toLocaleString()} تومان
         </span>
       </div>
-
-      <button className="btn bg-[#008978] relative group text-white border-none hover:bg-[#34180E] rounded-none w-[200px] text-[16px] transition-all">
-        <span className="absolute group-hover:-translate-y-8 duration-300 ease-in">
-          حذف محصول
-        </span>
-        <span className="absolute group-hover:translate-y-0 translate-y-12 duration-300 ease-in">
-          <RiDeleteBinLine size={25} />
-        </span>
-      </button>
+      <RemoveWishCard productID={_id} />
     </div>
   );
 };

@@ -2,17 +2,17 @@ import connectToDB from "@/configs/db";
 import productModel from "@/models/Product";
 
 type RequestBody = {
-  name: String;
-  price: Number;
-  shortDescription: String;
-  longDescription: String;
-  weight: Number;
-  suitableFor: String;
-  smell: String;
-  tags: [String];
+  name: string;
+  price: number;
+  shortDescription: string;
+  longDescription: string;
+  weight: number;
+  suitableFor: string;
+  smell: string;
+  tags: string[];
 };
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   try {
     await connectToDB();
     const body = await req.json();
@@ -38,16 +38,37 @@ export async function POST(req: Request, res: Response) {
       tags,
     });
 
-    return Response.json(
-      { message: "Product created successfully :", data: product },
+    return new Response(
+      JSON.stringify({
+        message: "Product created successfully",
+        data: product,
+      }),
       { status: 201 }
     );
   } catch (error) {
-    return Response.json({ message: error }, { status: 500 });
+    return new Response(
+      JSON.stringify({
+        message: "Internal Server Error",
+        error: error.message,
+      }),
+      { status: 500 }
+    );
   }
 }
 
 export async function GET() {
-  const products = await productModel.find({}, "-__v").populate("comments");
-  return Response.json(products);
+  try {
+    await connectToDB();
+    const products = await productModel.find({}, "-__v").populate("comments");
+
+    return new Response(JSON.stringify(products), { status: 200 });
+  } catch (error) {
+    return new Response(
+      JSON.stringify({
+        message: "Failed to fetch products",
+        error: error.message,
+      }),
+      { status: 500 }
+    );
+  }
 }

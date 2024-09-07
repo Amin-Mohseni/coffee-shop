@@ -16,23 +16,27 @@ function AddtoWishList({
   productID,
 }: {
   title: string;
-  productID: string;
+  productID: string; // فرض بر این است که productID یک رشته است
 }) {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>(null); // حالت اولیه null برای کاربر
 
   useEffect(() => {
     const authUser = async () => {
-      const res = await fetch("/api/auth/me");
-      if (res.status === 200) {
-        const data = await res.json();
-        setUser({ ...data });
+      try {
+        const res = await fetch("/api/auth/me");
+        if (res.status === 200) {
+          const data = await res.json();
+          setUser(data);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
       }
     };
 
     authUser();
   }, []);
 
-  const addtoWishList = async (event: any) => {
+  const addtoWishList = async (event: React.MouseEvent) => {
     event.preventDefault();
 
     if (!user?._id) {
@@ -42,17 +46,34 @@ function AddtoWishList({
         confirmButtonText: "بستن",
       });
     }
+
     const wish = { user: user._id, product: productID };
 
-    const res = await fetch("/api/wishlist", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(wish),
-    });
-    if (res.status === 201) {
+    try {
+      const res = await fetch("/api/wishlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(wish),
+      });
+
+      if (res.status === 201) {
+        Swal.fire({
+          title: "محصول مورد نظر به علاقه‌مندی‌ها اضافه شد",
+          icon: "success",
+          confirmButtonText: "بستن",
+        });
+      } else {
+        Swal.fire({
+          title: "مشکلی پیش آمده است",
+          icon: "error",
+          confirmButtonText: "بستن",
+        });
+      }
+    } catch (error) {
+      console.error("Error adding to wishlist:", error);
       Swal.fire({
-        title: "محصول مورد نظر به علاقه‌مندی‌ها اضافه شد",
-        icon: "success",
+        title: "مشکلی پیش آمده است",
+        icon: "error",
         confirmButtonText: "بستن",
       });
     }
@@ -60,8 +81,12 @@ function AddtoWishList({
 
   return (
     <div className="tooltip tooltip-right" data-tip="افزودن به علاقه‌مندی">
-      <a className="flex hover:text-gray-500 transition-all duration-300" href="#" onClick={addtoWishList}>
-        <CiHeart className=" transition-all duration-300" size={25} />
+      <a
+        className="flex hover:text-gray-500 transition-all duration-300"
+        href="#"
+        onClick={addtoWishList}
+      >
+        <CiHeart className="transition-all duration-300" size={25} />
         {title}
       </a>
     </div>

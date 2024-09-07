@@ -27,7 +27,7 @@ function SideBar() {
           <Link href={"/p-user/tickets"}>تیکت های پشتیبانی</Link>
         </li>
         <li>
-          <Link href={"/wishlist"}>لیست علاقه‌مندی‌ها</Link>
+          <Link href={"/p-user/wishlist"}>لیست علاقه‌مندی‌ها</Link>
         </li>
         <li>
           <Link href={"#"}>خروج</Link>

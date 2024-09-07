@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ name, price, score, _id }) => {
             </span>
           </button>
           <div className="absolute text-white top-3 left-[-200px] group-hover:left-2 transition-all flex flex-col gap-2 items-center justify-center">
-            <AddtoWishList productID={_id} title={""} />
+            <AddtoWishList productID={_id.toString()} title={""} />
             <div className="tooltip tooltip-right" data-tip="مشاهده سریع">
               <Link className="flex" href={"/"}>
                 <CiSearch
